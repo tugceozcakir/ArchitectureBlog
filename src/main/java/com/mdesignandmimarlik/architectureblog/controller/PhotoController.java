@@ -41,4 +41,13 @@ public class PhotoController {
             return ResponseEntity.notFound().build();
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePhotoById(@PathVariable Long id){
+        boolean deleted = photoService.deletePhotoById(id);
+        if(deleted)
+            return ResponseEntity.ok("Photo deleted succesfully");
+        else
+            return ResponseEntity.notFound().build();
+    }
+
 }

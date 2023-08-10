@@ -63,4 +63,14 @@ public class PhotoService {
         PhotoEntity photoEntity = photoRepository.findById(id).orElse(null);
         return photoMapper.convertToDTO(photoEntity);
     }
+    public boolean deletePhotoById(Long id) {
+        PhotoEntity photoEntity = photoRepository.findById(id).orElse(null);;
+
+        if (photoEntity != null) {
+            photoRepository.delete(photoEntity);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
